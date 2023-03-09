@@ -90,15 +90,6 @@ public class User implements UserDetails {
         roles.add(role);
     }
 
-/*    public void changeUser(User user) {
-        this.id = user.getId();
-        this.name = user.getName();
-        this.lastName = user.getLastName();
-        this.roles = user.getRoles();
-        this.username = user.getUsername();
-        this.password = user.getUserpassword();
-    }*/
-
     @Override
     public String toString() {
         return "User{" +
