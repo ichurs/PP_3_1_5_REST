@@ -12,24 +12,24 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 import java.security.Principal;
 import java.util.List;
 
-@RequestMapping("api/users")
+@RequestMapping("api/admin")
 @org.springframework.web.bind.annotation.RestController
-public class RestController {
+public class AdminRestController {
     private final UserService userService;
     private final RoleService roleService;
 
     @Autowired
-    public RestController(UserService userService, RoleService roleService) {
+    public AdminRestController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Void> addUser(@RequestBody User user) {
-        System.out.println(user);
         userService.addUser(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
     @GetMapping
     public ResponseEntity<List<User>> allUsers() {
         return new ResponseEntity<>(userService.allUsers(), HttpStatus.OK);
@@ -42,7 +42,6 @@ public class RestController {
 
     @PutMapping
     public ResponseEntity<Void> editUser(@RequestBody User user) {
-        System.out.println(user);
         userService.updateUser(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -2,7 +2,7 @@ let tableUsers = [];
 let currentUser = "";
 let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
 let editModal = new bootstrap.Modal(document.getElementById('editModal'));
-let request = new Request("http://localhost:8080/api/users", {
+let request = new Request("http://localhost:8080/api/admin", {
     method: "GET",
     headers: {
         'Content-Type': 'application/json',
@@ -26,8 +26,7 @@ function getUsers() {
     })
 }
 
-
-fetch("http://localhost:8080/api/users/current").then(res => res.json())
+fetch("http://localhost:8080/api/admin/current").then(res => res.json())
     .then(data => {
         currentUser = data;
         console.log(data)
@@ -113,7 +112,7 @@ function addNewUser(form) {
         roles: rolesUser("#roles")
     };
 
-    let req = new Request("http://localhost:8080/api/users", {
+    let req = new Request("http://localhost:8080/api/admin", {
         method: 'POST',
         body: JSON.stringify(user),
         headers: {
@@ -132,7 +131,7 @@ function showDeleteModal(id) {
         document.getElementById('deleteUser').reset();
     });
 
-    let request = new Request("http://localhost:8080/api/users/" + id, {
+    let request = new Request("http://localhost:8080/api/admin/" + id, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -162,7 +161,7 @@ function showDeleteModal(id) {
         event.preventDefault();
         if (!isDelete) {
             isDelete = true;
-            let request = new Request('http://localhost:8080/api/users/' + id, {
+            let request = new Request('http://localhost:8080/api/admin/' + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -179,7 +178,7 @@ function showDeleteModal(id) {
 }
 
 function showEditModal(id) {
-    let request = new Request("http://localhost:8080/api/users/" + id, {
+    let request = new Request("http://localhost:8080/api/admin/" + id, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -219,7 +218,7 @@ function submitFormEditUser(event) {
         roles: rolesUser("#rolesRed")
     }
     console.log(user);
-    let request = new Request('http://localhost:8080/api/users', {
+    let request = new Request('http://localhost:8080/api/admin', {
         method: 'PUT',
         body: JSON.stringify(user),
         headers: {

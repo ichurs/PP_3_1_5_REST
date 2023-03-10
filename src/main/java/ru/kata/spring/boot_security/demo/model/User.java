@@ -7,8 +7,8 @@ import java.util.*;
 
 
 @Entity
-@Table
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,7 +19,7 @@ public class User implements UserDetails {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
 
     @Column(name = "password")
@@ -49,7 +49,6 @@ public class User implements UserDetails {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
 
     public User() {
     }

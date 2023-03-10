@@ -1,7 +1,4 @@
-
 let currentUser = "";
-
-
 
 fetch("http://localhost:8080/api/users/current").then(res => res.json())
     .then(data => {
@@ -9,9 +6,6 @@ fetch("http://localhost:8080/api/users/current").then(res => res.json())
         console.log(data)
         showOneUser(currentUser);
     })
-
-
-
 
 function showOneUser(user) {
     let temp = "";

@@ -7,13 +7,13 @@ import java.util.Objects;
 
 
 @Entity
-@Table
 public class Role implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+
+    @Column(name = "role_name", unique = true)
     private String name;
 
     public Role() {
